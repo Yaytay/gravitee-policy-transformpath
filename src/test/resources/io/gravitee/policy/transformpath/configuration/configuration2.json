@@ -1,0 +1,8 @@
+{
+  "pathChanges": [
+    {
+      "pattern": "/ecom/($12[a-/search.*)",
+      "path": "http://localhost/product"
+    }
+  ]
+}

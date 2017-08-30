@@ -1,0 +1,37 @@
+{
+  "type" : "object",
+  "id" : "urn:jsonschema:io:gravitee:policy:transformpath:configuration:TransformPathPolicyConfiguration",
+  "title": "Transform Path",
+  "description": "Alter the path of the request without affecting the endpoints",
+  "properties" : {
+    "pathChanges" : {
+      "title": "Path Changes",
+      "description": "Ordered list of path changes to apply to inbound request.",
+      "type" : "array",
+      "items" : {
+        "type" : "object",
+        "title": "PathChange",
+        "id" : "urn:jsonschema:io:gravitee:policy:transformpath:configuration:PathChange",
+        "properties" : {
+          "pattern" : {
+            "title": "Match expression",
+            "description": "The key used to store the element (support EL).",
+            "type" : "string"
+          },
+          "path" : {
+            "title": "Resulting path",
+            "description": "The target endpoint (support EL).",
+            "type" : "string"
+          }
+        },
+        "required": [
+          "pattern",
+          "url"
+        ]
+      }
+    }
+  },
+  "required": [
+    "rules"
+  ]
+}

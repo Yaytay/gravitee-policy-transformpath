@@ -1,0 +1,8 @@
+{
+  "pathChanges": [
+    {
+      "pattern": "totototo",
+      "path": "http://localhost/product"
+    }
+  ]
+}
