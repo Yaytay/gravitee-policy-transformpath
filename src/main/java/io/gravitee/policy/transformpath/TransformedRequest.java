@@ -18,13 +18,13 @@ package io.gravitee.policy.transformpath;
 import io.gravitee.common.http.HttpHeaders;
 import io.gravitee.common.http.HttpMethod;
 import io.gravitee.common.http.HttpVersion;
+import io.gravitee.common.util.MultiValueMap;
 import io.gravitee.gateway.api.Request;
 import io.gravitee.gateway.api.buffer.Buffer;
 import io.gravitee.gateway.api.handler.Handler;
 import io.gravitee.gateway.api.stream.ReadStream;
-import io.gravitee.reporter.api.http.RequestMetrics;
+import io.gravitee.reporter.api.http.Metrics;
 import java.time.Instant;
-import java.util.Map;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -82,7 +82,7 @@ public class TransformedRequest implements Request {
     }
 
     @Override
-    public Map<String, String> parameters() {
+    public MultiValueMap<String, String> parameters() {
         return request.parameters();
     }
 
@@ -117,7 +117,7 @@ public class TransformedRequest implements Request {
     }
 
     @Override
-    public RequestMetrics metrics() {
+    public Metrics metrics() {
         return request.metrics();
     }
 

@@ -18,9 +18,10 @@ package io.gravitee.policy.transformpath;
 import io.gravitee.gateway.api.ExecutionContext;
 import io.gravitee.gateway.api.Invoker;
 import io.gravitee.gateway.api.Request;
+import io.gravitee.gateway.api.buffer.Buffer;
 import io.gravitee.gateway.api.handler.Handler;
 import io.gravitee.gateway.api.proxy.ProxyConnection;
-import io.gravitee.gateway.api.proxy.ProxyResponse;
+import io.gravitee.gateway.api.stream.ReadStream;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -41,9 +42,9 @@ public class TransformedInvoker implements Invoker {
     }
 
     @Override
-    public ProxyConnection invoke(ExecutionContext executionContext, Request serverRequest, Handler<ProxyResponse> result) {
+    public Request invoke(ExecutionContext ec, Request rqst, ReadStream<Buffer> stream, Handler<ProxyConnection> hndlr) {
         LOGGER.debug("Invoking with new path {}", path);
-        return invoker.invoke(executionContext, new TransformedRequest(serverRequest, path), result);
+        return invoker.invoke(ec, new TransformedRequest(rqst, path), stream, hndlr);
     }
     
 }
